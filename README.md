@@ -23,7 +23,6 @@
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
 
 
 
@@ -99,7 +98,7 @@ Current features include:
 
 ### Built With
 
-![MxAI Network Diagram](./frontend/public/MxAI.drawio.png)
+![MxAI Network Diagram](./frontend/public/MxAI-white.drawio.png)
 
 * [![Next](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
 * [![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
@@ -145,21 +144,82 @@ This is an example of how to list things you need to use the software and how to
 * Rust including cargo (For Backend)
 ### Installation
 
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
+#### Frontend
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-   ```sh
-   git clone https://github.com/your_username_/Project-Name.git
-   ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ```
+- Set up Supabase:
+
+  - Visit [Supabase](https://supabase.com/) and sign up for an account if you don’t already have one.
+
+  - After signing up and logging in, create a new project.
+
+  - Once your project is created, navigate to the 'API' section. Here, you will find your API keys: `supabaseUrl` and `anonKey`.
+
+  - Note down these keys. You'll be needing them in subsequent steps.
+
+- Clone the Repository:
+
+    Open your terminal or command prompt and execute the following commands:
+
+    ```sh
+    git clone https://github.com/CommanderAstern/encode-multiversX.git
+    ```
+
+    This will clone the repository into a directory named "encode-multiversX".
+
+- Install Necessary NPM Packages:
+
+    Before installing the packages, ensure you have [Node.js](https://nodejs.org/) and [NPM](https://www.npmjs.com/) installed on your machine.
+
+    Now, navigate to the frontend directory:
+
+    ```sh
+    cd encode-multiversX/frontend
+    ```
+
+    Install the required packages:
+
+    ```sh
+    npm install
+    ```
+
+- Configure Environment Variables:
+
+  - In the `frontend` directory, create an `.env.local` file.
+
+  - Open `.env.local` in a text editor.
+
+  - Add the following environment variables with the values that you obtained from the Supabase dashboard:
+
+    ```sh
+    NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+    NEXT_PUBLIC_SUPABASE_ANON_KEY=your_anon_key
+    ```
+
+    Replace `your_supabase_url` and `your_anon_key` with the appropriate values.
+
+  - Specify Your Backend's URL:
+
+    Specify the URL where your backend is currently running.
+
+    Open the `.env.local` file and add the following:
+
+    ```sh
+    NEXT_PUBLIC_BASE_URL=http://localhost:5000
+    ```
+
+    In the above example, the backend is assumed to be running locally on port `5000`. Replace `http://localhost:5000` with the actual URL where your backend is running.
+
+  - Save and close the `.env.local` file.
+
+- Run the Application:
+
+    If you're ready to see your project in action, you can start the development server:
+
+    ```sh
+    npm run dev
+    ```
+
+    Visit `http://localhost:3000` in your browser to see the application running.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -192,9 +252,48 @@ To install the backend, follow the steps below:
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+- Create an Account
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+  - Open your web browser and navigate to: 
+
+  ```
+  http://mxai.live/signup
+  ```
+
+  - Follow the on-screen instructions to create an account.
+
+- Configure OpenAI API Key
+
+  - After logging in, look for a user icon or profile picture on the top right corner of the web page.
+
+  - Click on it. A modal (popup window) will appear.
+
+  - Within this modal, you'll find an input field to add your OpenAI API key. Paste your OpenAI API key into the designated field.
+
+  - Save to ensure your key is stored.
+
+- Set Up MultiversX Wallet Extension
+
+  Before proceeding, ensure you have the MultiversX Wallet browser extension:
+
+  - If you haven't installed the MultiversX Wallet extension, download and install it from the respective browser's extension store.
+
+  - Once installed, click on the MultiversX Wallet icon in your browser's toolbar.
+
+  - Log in or set up your wallet account.
+
+- Start Typing!
+
+  With everything set up, you're ready to interact with the application. Start typing in the designated area, and watch as the magic happens!
+
+#### Sample Prompts:
+
+- I would like to send a transaction of 1000 to `wallet_address`
+- What is the balance of `wallet_address`?
+- Can you generate a contract that let's you add two numbers and also holds the number 8 which you can increment?
+- Can you tell me about the extension wallet provider in multiversX?
+- I'd like to interact with an ERC20 contract at address `contract_address`
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -203,15 +302,15 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 <!-- ROADMAP -->
 ## Roadmap
 
-- [x] Add Changelog
-- [x] Add back to top links
-- [ ] Add Additional Templates w/ Examples
-- [ ] Add "components" document to easily copy & paste sections of the readme
-- [ ] Multi-language Support
-    - [ ] Chinese
-    - [ ] Spanish
-
-See the [open issues](https://github.com/CommanderAstern/encode-multiversX/issues) for a full list of proposed features (and known issues).
+- [x] Code generation, compilation and deployment
+- [x] Interact with contracts (ERC20 as of now)
+- [x] Send and view balances of accounts
+- [x] Lookup Multiversx Documentation
+- [ ] Improve code generation, expand training dataset
+- [ ] Swap tokens using Ashswap
+- [ ] Extend interaction to other contracts
+    - [ ] ERC721
+    - [ ] ERC1155
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

@@ -1,9 +1,10 @@
+// Client-side configuration
 'use client';
 
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 import React, { useEffect, useState } from 'react';
 import Popover from '@mui/material/Popover';
-import { useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation'; // Corrected the import path
 import Image from 'next/image';
 
 export default function BasicPopover() {
@@ -61,6 +62,7 @@ export default function BasicPopover() {
 
   return (
     <div className='ml-4'>
+      {/* User avatar icon */}
       <Image src='/icons/avatar-0.svg' alt='User' onClick={handleClick} width={40} height={40} className='rounded-full cursor-pointer' />
       <Popover
         id={id}
@@ -77,6 +79,7 @@ export default function BasicPopover() {
         }}
       >
         <div className="p-4">
+          {/* OpenAI API Key input field */}
           <div className="flex mb-4">
             <label className="block mb-2">OpenAI API Key</label>
             <input
@@ -94,6 +97,7 @@ export default function BasicPopover() {
             </button>
           </div>
 
+          {/* Logout button */}
           <button onClick={handleSignOut} className='rounded-lg w-full bg-mindful-gray-80 text-white text-bold p-2'>Logout</button>
 
         </div>

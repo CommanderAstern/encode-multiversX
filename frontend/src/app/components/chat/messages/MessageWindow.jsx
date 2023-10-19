@@ -10,7 +10,6 @@ const MessageWindow = () => {
   const [messages, setMessages] = useState([]);
   const selectedChatId = useChatStore((state) => state.selectedChatId);
 
-  // Fetch messages from DB
   useEffect(() => {
     async function getMessages() {
       try {
@@ -31,7 +30,6 @@ const MessageWindow = () => {
     getMessages();
   }, [selectedChatId]);
 
-  // Listen for new messages
   useEffect(() => {
     const channel = supabase
       .channel('realtime posts')
@@ -50,7 +48,6 @@ const MessageWindow = () => {
         });
       }).subscribe();
 
-    // Unsubscribe from channel on unmount
     return () => {
       supabase.removeChannel(channel);
     }

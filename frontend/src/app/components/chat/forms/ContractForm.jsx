@@ -90,7 +90,7 @@ function ContractForm({ contractAddress }) {
 
       case 'transfer':
       case 'approve':
-        const explorerLink = await sendTransaction(methodName, [new AddressValue(Address.fromBech32(args[0])), new BigIntValue(args[1])]);
+        const explorerLink = await sendTransaction(methodName, args.map(arg => arg instanceof Address ? new AddressValue(Address.fromBech32(arg)) : new BigIntValue(arg)));
         await postMessage(`Your transaction has been deployed successfully! Check it out [here](${explorerLink})`);
         break;
     }
