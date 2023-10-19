@@ -98,7 +98,7 @@ Current features include:
 
 ### Built With
 
-![MxAI Network Diagram](./frontend/public/MxAI.drawio.png)
+![MxAI Network Diagram](./frontend/public/MxAI-white.drawio.png)
 
 * [![Next](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
 * [![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
@@ -145,17 +145,17 @@ This is an example of how to list things you need to use the software and how to
 
 #### Frontend
 
-1. Set up Supabase:
+- Set up Supabase:
 
-    1.1. Visit [Supabase](https://supabase.com/) and sign up for an account if you don’t already have one.
+  - Visit [Supabase](https://supabase.com/) and sign up for an account if you don’t already have one.
 
-    1.2. After signing up and logging in, create a new project.
+  - After signing up and logging in, create a new project.
 
-    1.3. Once your project is created, navigate to the 'API' section. Here, you will find your API keys: `supabaseUrl` and `anonKey`.
+  - Once your project is created, navigate to the 'API' section. Here, you will find your API keys: `supabaseUrl` and `anonKey`.
 
-    1.4. Note down these keys. You'll be needing them in subsequent steps.
+  - Note down these keys. You'll be needing them in subsequent steps.
 
-2. Clone the Repository:
+- Clone the Repository:
 
     Open your terminal or command prompt and execute the following commands:
 
@@ -165,7 +165,7 @@ This is an example of how to list things you need to use the software and how to
 
     This will clone the repository into a directory named "encode-multiversX".
 
-3. Install Necessary NPM Packages:
+- Install Necessary NPM Packages:
 
     Before installing the packages, ensure you have [Node.js](https://nodejs.org/) and [NPM](https://www.npmjs.com/) installed on your machine.
 
@@ -181,13 +181,13 @@ This is an example of how to list things you need to use the software and how to
     npm install
     ```
 
-4. Configure Environment Variables:
+- Configure Environment Variables:
 
-    4.1. In the `frontend` directory, create an `.env.local` file.
+  - In the `frontend` directory, create an `.env.local` file.
 
-    4.2. Open `.env.local` in a text editor.
+  - Open `.env.local` in a text editor.
 
-    4.3. Add the following environment variables with the values that you obtained from the Supabase dashboard:
+  - Add the following environment variables with the values that you obtained from the Supabase dashboard:
 
     ```sh
     NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
@@ -196,7 +196,7 @@ This is an example of how to list things you need to use the software and how to
 
     Replace `your_supabase_url` and `your_anon_key` with the appropriate values.
 
-    4.4. Specify Your Backend's URL:
+  - Specify Your Backend's URL:
 
     Specify the URL where your backend is currently running.
 
@@ -208,9 +208,9 @@ This is an example of how to list things you need to use the software and how to
 
     In the above example, the backend is assumed to be running locally on port `5000`. Replace `http://localhost:5000` with the actual URL where your backend is running.
 
-    4.5. Save and close the `.env.local` file.
+  - Save and close the `.env.local` file.
 
-5. Run the Application:
+- Run the Application:
 
     If you're ready to see your project in action, you can start the development server:
 
@@ -225,48 +225,47 @@ This is an example of how to list things you need to use the software and how to
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-#### Step 1: Create an Account
+- Create an Account
 
-1. Open your web browser and navigate to: 
-```
-http://mxai.live/signup
-```
+  - Open your web browser and navigate to: 
 
-2. Follow the on-screen instructions to create an account.
+  ```
+  http://mxai.live/signup
+  ```
 
-#### Step 2: Configure OpenAI API Key
+  - Follow the on-screen instructions to create an account.
 
-1. After logging in, look for a user icon or profile picture on the top right corner of the web page.
+- Configure OpenAI API Key
 
-2. Click on it. A modal (popup window) will appear.
+  - After logging in, look for a user icon or profile picture on the top right corner of the web page.
 
-3. Within this modal, you'll find an input field to add your OpenAI API key. Paste your OpenAI API key into the designated field.
+  - Click on it. A modal (popup window) will appear.
 
-4. Save to ensure your key is stored.
+  - Within this modal, you'll find an input field to add your OpenAI API key. Paste your OpenAI API key into the designated field.
 
-#### Step 3: Set Up MultiversX Wallet Extension
+  - Save to ensure your key is stored.
 
-Before proceeding, ensure you have the MultiversX Wallet browser extension:
+- Set Up MultiversX Wallet Extension
 
-1. If you haven't installed the MultiversX Wallet extension, download and install it from the respective browser's extension store.
+  Before proceeding, ensure you have the MultiversX Wallet browser extension:
 
-2. Once installed, click on the MultiversX Wallet icon in your browser's toolbar.
+  - If you haven't installed the MultiversX Wallet extension, download and install it from the respective browser's extension store.
 
-3. Log in or set up your wallet account.
+  - Once installed, click on the MultiversX Wallet icon in your browser's toolbar.
 
-#### Step 4: Start Typing!
+  - Log in or set up your wallet account.
 
-With everything set up, you're ready to interact with the application. Start typing in the designated area, and watch as the magic happens!
+- Start Typing!
 
----
+  With everything set up, you're ready to interact with the application. Start typing in the designated area, and watch as the magic happens!
 
 #### Sample Prompts:
 
-- I would like to send a transaction of 1000 to erd1877ppafpazuwgjcnr02rdhnn8ux53xlwvvr0aexww3fdlt07ch4sufuv5c
-- What is the balance of erd1877ppafpazuwgjcnr02rdhnn8ux53xlwvvr0aexww3fdlt07ch4sufuv5c
-- Can you generate a contract that let's you add two numbers and also holds the number 8 which you can increment it?
+- I would like to send a transaction of 1000 to `wallet_address`
+- What is the balance of `wallet_address`?
+- Can you generate a contract that let's you add two numbers and also holds the number 8 which you can increment?
 - Can you tell me about the extension wallet provider in multiversX?
-- I'd like to interact with an ERC20 contract at address erd1qqqqqqqqqqqqqpgqdjfrylk03uvwlqc2t3l8ymwelev3zmw3wdtqqy0fzc
+- I'd like to interact with an ERC20 contract at address `contract_address`
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -276,15 +275,15 @@ With everything set up, you're ready to interact with the application. Start typ
 <!-- ROADMAP -->
 ## Roadmap
 
-- [x] Add Changelog
-- [x] Add back to top links
-- [ ] Add Additional Templates w/ Examples
-- [ ] Add "components" document to easily copy & paste sections of the readme
-- [ ] Multi-language Support
-    - [ ] Chinese
-    - [ ] Spanish
-
-See the [open issues](https://github.com/CommanderAstern/encode-multiversX/issues) for a full list of proposed features (and known issues).
+- [x] Code generation, compilation and deployment
+- [x] Interact with contracts (ERC20 as of now)
+- [x] Send and view balances of accounts
+- [x] Lookup Multiversx Documentation
+- [ ] Improve code generation, expand training dataset
+- [ ] Swap tokens using Ashswap
+- [ ] Extend interaction to other contracts
+    - [ ] ERC721
+    - [ ] ERC1155
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
