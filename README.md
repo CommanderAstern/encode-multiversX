@@ -41,7 +41,7 @@
     <a href="https://github.com/CommanderAstern/encode-multiversX"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/CommanderAstern/encode-multiversX">View Demo</a>
+    <a href="https://www.mxai.live/">View Demo</a>
     ·
     <a href="https://github.com/CommanderAstern/encode-multiversX/issues">Report Bug</a>
     ·
@@ -49,7 +49,12 @@
   </p>
 </div>
 
+Important Links:
+* [Pitch Deck](https://www.canva.com/design/DAFxuTABX-0/lCz7IkPDz8K4_CJQqnXCHA/edit?utm_content=DAFxuTABX-0&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+* [Presentation Video](https://youtu.be/2Z3Z3Q4Z8Zo)
+* [Live Demo](https://www.mxai.live/)
 
+Note - **You must provide an Openai key on the website, for the chatbot to operate successfully!**
 
 <!-- TABLE OF CONTENTS -->
 <details>
@@ -353,17 +358,6 @@ Pratik Jallan - [Linkedin](https://www.linkedin.com/in/pratik-jallan/) - pratikj
 Malavika Harikumar - [Linkedin](https://www.linkedin.com/in/malavika-harikumar-here/) - malavikaha02@gmail.com
 
 Asim Jawahir - [Linkedin](https://www.linkedin.com/in/asimjawahir/) - asimjawahir123@gmail.com
-
-Project Link: [https://github.com/CommanderAstern/encode-multiversX](https://github.com/CommanderAstern/encode-multiversX)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
-
-
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
