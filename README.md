@@ -313,6 +313,7 @@ You can interact with the Backend API directly. You can use the following postma
 - [x] Interact with contracts (ERC20 as of now)
 - [x] Send and view balances of accounts
 - [x] Lookup Multiversx Documentation
+- [ ] Enable editing of generated code
 - [ ] Improve code generation, expand training dataset
 - [ ] Swap tokens using Ashswap
 - [ ] Extend interaction to other contracts
