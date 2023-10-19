@@ -23,6 +23,7 @@ function Input() {
 		setSelectedChatId,
 	} = useChatStore();
 
+	// Resize textarea to fit content
 	const handleInputChange = (event) => {
 		const target = event.target;
 		setInputValue(target.value);
@@ -30,6 +31,7 @@ function Input() {
 		target.style.height = (target.scrollHeight) + 'px';
 	};
 
+	// Add new conversation to DB
 	const handleAddNewConversation = async () => {
 		try {
 			const { data, error } = await supabase
@@ -52,6 +54,7 @@ function Input() {
 		}
 	}
 
+	// Handle form submission
 	const handleSubmit = async (event) => {
 		event.preventDefault();
 		if (!inputValue.trim()) return;
