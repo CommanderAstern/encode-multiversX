@@ -248,7 +248,6 @@ To install the backend, follow the steps below:
     gunicorn app:app -w 3 --timeout 120    
     ```
 
-
 <!-- USAGE EXAMPLES -->
 ## Usage
 
@@ -294,7 +293,8 @@ To install the backend, follow the steps below:
 - Can you tell me about the extension wallet provider in multiversX?
 - I'd like to interact with an ERC20 contract at address `contract_address`
 
-
+#### Backend API Requests Examples
+You can interact with the Backend API directly. You can use the following postman collection as a reference: [Postman Collection](https://lively-escape-448936.postman.co/workspace/New-Team-Workspace~ffeb280c-698a-4071-a960-d4e55fbc96a0/collection/24725223-2a9d8419-0d88-43f8-a634-883f6cf3ad7b?action=share&creator=24725223)
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
@@ -311,7 +311,7 @@ To install the backend, follow the steps below:
 - [ ] Extend interaction to other contracts
     - [ ] ERC721
     - [ ] ERC1155
-
+- [ ] Allow Interaction of all contracts given ABI
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
