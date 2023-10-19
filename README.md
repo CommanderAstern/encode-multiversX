@@ -158,25 +158,25 @@ This is an example of how to list things you need to use the software and how to
 
 - Clone the Repository:
 
-    Open your terminal or command prompt and execute the following commands:
+  - Open your terminal or command prompt and execute the following commands:
 
     ```sh
     git clone https://github.com/CommanderAstern/encode-multiversX.git
-    ```
+    ``` 
 
-    This will clone the repository into a directory named "encode-multiversX".
+  - This will clone the repository into a directory named "encode-multiversX".
 
 - Install Necessary NPM Packages:
 
-    Before installing the packages, ensure you have [Node.js](https://nodejs.org/) and [NPM](https://www.npmjs.com/) installed on your machine.
+  - Before installing the packages, ensure you have [Node.js](https://nodejs.org/) and [NPM](https://www.npmjs.com/) installed on your machine.
 
-    Now, navigate to the frontend directory:
+  - Now, navigate to the frontend directory:
 
     ```sh
     cd encode-multiversX/frontend
     ```
 
-    Install the required packages:
+  - Install the required packages:
 
     ```sh
     npm install
@@ -203,9 +203,9 @@ This is an example of how to list things you need to use the software and how to
 
     Open the `.env.local` file and add the following:
 
-    ```sh
-    NEXT_PUBLIC_BASE_URL=http://localhost:5000
-    ```
+      ```sh
+      NEXT_PUBLIC_BASE_URL=http://localhost:5000
+      ```
 
     In the above example, the backend is assumed to be running locally on port `5000`. Replace `http://localhost:5000` with the actual URL where your backend is running.
 
@@ -270,6 +270,8 @@ To install the backend, follow the steps below:
   - Within this modal, you'll find an input field to add your OpenAI API key. Paste your OpenAI API key into the designated field.
 
   - Save to ensure your key is stored.
+
+  ![API key input screenshot](./frontend/public/api-key-input.png)
 
 - Set Up MultiversX Wallet Extension
 
