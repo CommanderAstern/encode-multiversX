@@ -67,7 +67,7 @@
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#installation">Installation</a></li>
-      </ul>
+        <li><a href="#backend">Backend Setup</a></li>      </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
@@ -141,7 +141,8 @@ This is an example of how to list things you need to use the software and how to
   ```sh
   npm install npm@latest -g
   ```
-
+* Python (For Backend)
+* Rust including cargo (For Backend)
 ### Installation
 
 _Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
@@ -162,6 +163,30 @@ _Below is an example of how you can instruct your audience on installing and set
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+### Backend
+
+To install the backend, follow the steps below:
+
+1. Go to the backend directory
+   ```sh
+   cd backend
+   ```
+2. Create an env file and add the following variables
+   ```sh
+   cp env.example .env
+   ```
+3. Install the requirements
+   ```sh
+    pip install -r requirements.txt
+    ```
+4. Install Rust Mx Library
+    ```sh
+    cargo install multiversx-sc-meta
+    ```
+5. Run the backend using gunicon
+    ```sh
+    gunicorn app:app -w 3 --timeout 120    
+    ```
 
 
 <!-- USAGE EXAMPLES -->
