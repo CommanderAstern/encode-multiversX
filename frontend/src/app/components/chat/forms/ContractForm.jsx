@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import useProvider from '@/hooks/useWalletProvider';
+import useWalletProvider from '@/hooks/useWalletProvider';
 import { ApiNetworkProvider } from '@multiversx/sdk-network-providers/out';
 import { Address, AddressValue, BigIntValue } from '@multiversx/sdk-core';
 import axios from 'axios';
@@ -16,7 +16,7 @@ function ContractForm({ contractAddress }) {
   const [spender, setSpender] = useState('');
   const [recipient, setRecipient] = useState('');
   const [amount, setAmount] = useState('');
-  const [walletProvider, isConnected, setIsConnected] = useProvider()
+  const walletProvider = useWalletProvider()
   const supabase = createClientComponentClient();
   const selectedChatId = useChatStore(state => state.selectedChatId);
 
@@ -25,53 +25,46 @@ function ContractForm({ contractAddress }) {
     setMethod(e.target.value);
   };
 
+  // Function to call a contract method based on the selected method
   const callContract = async (methodName, ...args) => {
     console.log(`Called ${methodName} with args:`, args);
-    const abiUrl = "https://github.com/CommanderAstern/encode-multiversX/raw/sdk-2/frontend/public/contract/erc20.abi.json"
+
+    // Constants
+    const abiUrl = "https://github.com/CommanderAstern/encode-multiversX/raw/sdk-2/frontend/public/contract/erc20.abi.json";
     const response = await axios.get(`${window.location.origin}/api/abi?abiUrl=${abiUrl}`);
     const abiRegistry = AbiRegistry.create(response.data.data);
     const networkProvider = new ApiNetworkProvider("https://devnet-api.multiversx.com");
     const _contractAddress = Address.fromBech32(contractAddress);
     const existingContract = new SmartContract({ address: _contractAddress, abi: abiRegistry });
 
-    const balanceOf = async () => {
-      const query = existingContract.createQuery({
-        func: "balanceOf",
-        args: [new AddressValue(Address.fromBech32(address))]
-      });
-      const getEndpoint = abiRegistry.getEndpoint("balanceOf");
-      const queryResponse = await networkProvider.queryContract(query);
-      const { values } = new ResultsParser().parseQueryResponse(queryResponse, getEndpoint);
+    // Function to post a message to the chat
+    const postMessage = async (message) => {
       const { error } = await supabase.from('messages').insert([
         {
-            text: `The balance of ${address} is ${values[0].valueOf().toFixed(0)}`,
-            conversation_id: selectedChatId,
-            is_bot: true
+          text: message,
+          conversation_id: selectedChatId,
+          is_bot: true
         }
-    ]);
-    }
+      ]);
+    };
 
-    const allowance = async () => {
+    // Function to query a contract method
+    const queryContract = async (func, args) => {
       const query = existingContract.createQuery({
-        func: "allowance",
-        args: [new AddressValue(Address.fromBech32(owner)), new AddressValue(Address.fromBech32(spender))]
+        func,
+        args
       });
-      const getEndpoint = abiRegistry.getEndpoint("allowance");
+      const getEndpoint = abiRegistry.getEndpoint(func);
       const queryResponse = await networkProvider.queryContract(query);
       const { values } = new ResultsParser().parseQueryResponse(queryResponse, getEndpoint);
-      const { error } = await supabase.from('messages').insert([
-        {
-            text: `The allowance of ${spender} is ${values[0].valueOf().toFixed(0)}`,
-            conversation_id: selectedChatId,
-            is_bot: true
-        }
-    ]);
-    }
+      return values
+    };
 
-    const transfer = async () => {
+    // Function to send a transaction to a contract method
+    const sendTransaction = async (method, args) => {
       const deployerAddress = await walletProvider.login();
       const deployerOnNetwork = await networkProvider.getAccount(Address.fromBech32(deployerAddress));
-      let tx = existingContract.methods.transfer([new AddressValue(Address.fromBech32(recipient)), new BigIntValue(amount)])
+      let tx = existingContract.methods[method](args)
         .withSender(Address.fromBech32(deployerAddress))
         .withNonce(deployerOnNetwork.nonce)
         .withGasLimit(20000000)
@@ -80,54 +73,30 @@ function ContractForm({ contractAddress }) {
 
       tx = await walletProvider.signTransaction(tx);
       const txHash = await networkProvider.sendTransaction(tx);
-      const explorerLink = `https://devnet-explorer.multiversx.com/transactions/${txHash}`;
-      const { error } = await supabase.from('messages').insert([
-        {
-            text: `Your transaction has been deployed successfully! Check it out [here](${explorerLink})`,
-            conversation_id: selectedChatId,
-            is_bot: true
-        }
-    ]);
-    }
+      return `https://devnet-explorer.multiversx.com/transactions/${txHash}`;
+    };
 
-    const approve = async () => {
-      const deployerAddress = await walletProvider.login();
-      const deployerOnNetwork = await networkProvider.getAccount(Address.fromBech32(deployerAddress));
-      let tx = existingContract.methods.approve([new AddressValue(Address.fromBech32(recipient)), new BigIntValue(amount)])
-        .withSender(Address.fromBech32(deployerAddress))
-        .withNonce(deployerOnNetwork.nonce)
-        .withGasLimit(20000000)
-        .withChainID("D")
-        .buildTransaction();
-
-      tx = await walletProvider.signTransaction(tx);
-      const txHash = await networkProvider.sendTransaction(tx);
-      const explorerLink = `https://devnet-explorer.multiversx.com/transactions/${txHash}`;
-      const { error } = await supabase.from('messages').insert([
-        {
-            text: `Your transaction has been deployed successfully! Check it out [here](${explorerLink})`,
-            conversation_id: selectedChatId,
-            is_bot: true
-        }
-    ]);
-    }
-
+    // Switch statement to handle the different methods
     switch (methodName) {
       case 'balanceOf':
-        balanceOf();
+        const balanceOfValue = await queryContract("balanceOf", [new AddressValue(Address.fromBech32(args[0]))]);
+        await postMessage(`The balance of ${args[0]} is ${balanceOfValue[0].valueOf().toFixed(0)}`);
         break;
+
       case 'allowance':
-        allowance();
+        const allowanceValue = await queryContract("allowance", [new AddressValue(Address.fromBech32(args[0])), new AddressValue(Address.fromBech32(args[1]))]);
+        await postMessage(`The allowance of ${args[1]} is ${allowanceValue[0].valueOf().toFixed(0)}`);
         break;
+
       case 'transfer':
-        transfer();
-        break;
       case 'approve':
-        approve();
+        const explorerLink = await sendTransaction(methodName, args.map(arg => arg instanceof Address ? new AddressValue(Address.fromBech32(arg)) : new BigIntValue(arg)));
+        await postMessage(`Your transaction has been deployed successfully! Check it out [here](${explorerLink})`);
         break;
     }
   };
 
+  // Function to handle the form submission
   const handleSubmit = (e) => {
     e.preventDefault();
     switch (method) {
