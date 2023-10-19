@@ -54,7 +54,7 @@ Important Links:
 * [Presentation Video](https://youtu.be/2Z3Z3Q4Z8Zo)
 * [Live Demo](https://www.mxai.live/)
 
-Note - **You must provide an Openai key on the website, for the chatbot to operate successfully!**
+Note - **You must provide an Openai API key on the website, for the chatbot to operate successfully!**
 
 <!-- TABLE OF CONTENTS -->
 <details>
