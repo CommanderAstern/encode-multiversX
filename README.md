@@ -51,7 +51,7 @@
 
 Important Links:
 * [Pitch Deck](https://www.canva.com/design/DAFxuTABX-0/lCz7IkPDz8K4_CJQqnXCHA/edit?utm_content=DAFxuTABX-0&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
-* [Presentation Video](https://youtu.be/2Z3Z3Q4Z8Zo)
+* [Presentation Video](https://youtu.be/VP0I5SaZLYg?si=2CMdhqvFdo8Olb8u)
 * [Live Demo](https://www.mxai.live/)
 
 Note - **You must provide an Openai API key on the website, for the chatbot to operate successfully!**
